@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplication3.Classes.Intermediate.Connecter>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <input id="bt" class="buttons" name="button" type="radio" checked />
+            <span>Create a key-value card</span> <br />
+            <input class="buttons" name="button" type="radio"/>
+            <span">Create a question-answers card</span> <br />
+            <div class="container" id="cardt">
+                @using (Html.BeginForm("CreateTextCard","Home",FormMethod.Post))
+                {
+                    <p>
+                        <label>Key</label><br />
+                        @Html.TextBox("key",null,new { maxlength = 30})
+                    </p>
+                    <p>
+                        <label>Value</label><br />
+                        @Html.TextBox("a1",null,new { maxlength = 30})
+                    </p>
+                    <p>
+                        <input type="submit" value="Send"/>
+                    </p>
+                }
+            </div>
+            <div class="container" id="cardq">
+                @using (Html.BeginForm("CreateQuestionCard","Home",FormMethod.Post))
+                {
+                    <p>
+                        <label>Key</label><br />
+                        @Html.TextBox("key",null,new { maxlength = 40})
+                    </p>
+                    <p>
+                        <label>Answer a)</label><br />
+                        @Html.TextBox("a1",null,new { maxlength = 40})
+                    </p>
+                    <p>
+                        <label>Answer b)</label><br />
+                        @Html.TextBox("a2",null,new { maxlength = 40})
+                    </p>
+                    <p>
+                        <label>Answer c)</label><br />
+                        @Html.TextBox("a3",null,new { maxlength = 40})
+                    </p>
+                    <p>
+                        <label>Answer d)</label><br />
+                        @Html.TextBox("a4",null,new { maxlength = 40})
+                    </p>
+                    <p>
+                        <input type="submit" value="Send"/>
+                    </p>
+                }
+            </div>
+        </div>
+        <div class="col-8">
+            @await Html.PartialAsync("Show",Model)
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebApplication3.Classes.Intermediate.Connecter>
+<h1>All cards</h1>
+<div class="pb-2">
+    @foreach (var item in Model)
+    {
+        @foreach (var it in item.tcards)
+        {
+            <div class="row border rounded-2 mb-1" style="background-color:beige; font-size:16px;">
+                <div class="col-2" style="padding:7px;">
+                    @it.key
+                </div>
+                <div class="col-8" style="padding:7px;">
+                    @it.value
+                </div>
+                <div class="col-2 p-0 text-end">
+                    <form asp-controller="Home" asp-action="DeleteTC" method="post" asp-route-Id="@it.Id">
+                        <button type="submit"  class="btn btn-outline-dark border-0">Delete</button>
+                    </form>
+                </div>
+            </div>
+        }
+        @foreach (var it in item.qcards)
+        {
+            <div class="row border rounded-2 mb-1" style="background-color:beige; font-size:16px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-10" style="padding:7px;">
+                            Question: @it.key
+                        </div>
+                        <div class="col-2 p-0 text-end">
+                            <form asp-controller="Home" asp-action="DeleteQC" method="post" asp-route-Id="@it.Id">
+                                <button type="submit"  class="btn btn-outline-dark border-0">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-6">A) @it.values[0]</div>
+                        <div class="col-6">B) @it.values[1]</div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-6">C) @it.values[2]</div>
+                        <div class="col-6">D) @it.values[3]</div>
+                    </div>
+                </div>
+            </div>
+        
+        }
+     }
+ </div>
